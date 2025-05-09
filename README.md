@@ -21,7 +21,7 @@ Inspirando-se na estrutura de:
 - Faça o **fork** do repositório de avaliação.
 - Crie uma **branch** chamada:  
   `avaliacaodw-seulogindogithub`
-- Exemplo: `avaliacaodw-joaosilva`
+- Exemplo: `avaliacaodw-clarachence`
 
 ---
 
