@@ -14,7 +14,14 @@ const firebaseConfig = {
   };
 
 const app = initializeApp(firebaseConfig)
-const analytics = getAnalytics(app)
+let analytics
+if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+  try {
+    analytics = getAnalytics(app)
+  } catch (e) {
+    console.warn('Analytics não pôde ser iniciado:', e)
+  }
+}
 const db = getFirestore(app)
 const auth = getAuth(app)
 
