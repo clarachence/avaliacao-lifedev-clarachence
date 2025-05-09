@@ -2,10 +2,14 @@ import styles from './Dashboard.module.css'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
+import { useDeleteDocument } from '../../hooks/useDeleteDocument'
+import { useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
   const [posts, setPosts] = useState([])
   const { documents: postsData, loading } = useFetchDocuments("posts")
+  const { deleteDocument } = useDeleteDocument()
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (postsData) {
@@ -44,6 +48,12 @@ const Dashboard = () => {
                 <Link to={`/post/${post.id}`} className="btn">
                   Ver
                 </Link>
+                <Link to={`/post/edit/${post.id}`} className="btn btn-outline">
+                  Editar
+                </Link>
+                <button onClick={() => deleteDocument("posts", post.id)} className="btn btn-outline btn-danger">
+                  Excluir
+                </button>
               </div>
             </div>
           ))
